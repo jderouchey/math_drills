@@ -8,7 +8,6 @@ __copyright__ = "No Copyright 2017, Reno, Nevada"
 import random
 import datetime, time
 
-
 count = 1
 correct = 0
 questions = list(xrange(145))
@@ -38,6 +37,12 @@ for q in rq:
 now = datetime.datetime.now()
 duration = now - then
 print 'You have answered ' + str(correct) + ' out of 78' + ' in ' + str(duration)
+print 'Accuracy :' + str(correct/float(78)) 
+print 'Speed is :' + str(duration.seconds/float(78))
 
-
-
+f = open('math.log', 'a')
+ts = time.time()
+st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d,%H:%M:%S')
+f.write(st)
+f.write(',' + str(correct/float(78))) 
+f.write(',' + str(duration.seconds/float(78)))
